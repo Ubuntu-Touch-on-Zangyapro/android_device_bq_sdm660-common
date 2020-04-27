@@ -120,8 +120,7 @@ PRODUCT_PACKAGES += \
     android.frameworks.displayservice@1.0 \
     android.hardware.camera.provider@2.4-impl \
     android.hardware.camera.provider@2.4-service \
-    libxml2 \
-    Snap
+    libxml2
 
 # CABL
 PRODUCT_COPY_FILES += \
@@ -182,8 +181,8 @@ PRODUCT_PACKAGES += \
     android.hidl.manager@1.0-java
 
 # IMS
-PRODUCT_PACKAGES += \
-    ims-ext-common
+#PRODUCT_PACKAGES += \
+#    ims-ext-common
 
 # Init
 PRODUCT_PACKAGES += \
@@ -366,16 +365,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libtinyxml2
 
-# Update engine
-PRODUCT_PACKAGES += \
-    brillo_update_payload \
-    update_engine \
-    update_engine_sideload \
-    update_verifier
-
-PRODUCT_PACKAGES_DEBUG += \
-    update_engine_client
-
 # USB
 PRODUCT_PACKAGES += \
     android.hardware.usb@1.0-service
@@ -404,18 +393,14 @@ PRODUCT_COPY_FILES += \
     device/bq/sdm660-common/wifi/WCNSS_qcom_cfg.ini:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/WCNSS_qcom_cfg.ini
 
 PRODUCT_PACKAGES += \
-    android.hardware.wifi@1.0-service \
-    hostapd \
-    hostapd_cli \
-    libqsap_sdk \
-    libQWiFiSoftApCfg \
-    libwifi-hal-qcom \
-    wificond \
-    wpa_supplicant \
-    wpa_supplicant.conf
+    android.hardware.wifi@1.0-service
 
 # Halium/UBports
 # Huong Tram is my favorite singer
+
+# systemimage build fix
+PRODUCT_PACKAGES += \
+	fec
 
 # Disable FakeSensorServer so UBports can use it
 MINIMEDIA_SENSORSERVER_DISABLE := 1
