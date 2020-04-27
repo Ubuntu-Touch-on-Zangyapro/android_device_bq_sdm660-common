@@ -19,8 +19,8 @@ $(call inherit-product-if-exists, vendor/bq/sdm660-common/sdm660-common-vendor.m
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += device/bq/sdm660-common/overlay
-PRODUCT_ENFORCE_RRO_TARGETS := \
-    framework-res
+#PRODUCT_ENFORCE_RRO_TARGETS := \
+#    framework-res
 
 # Properties
 -include device/bq/sdm660-common/vendor_prop.mk
@@ -345,11 +345,11 @@ PRODUCT_PACKAGES += \
     libsensorndkbridge
 
 # Telephony
-PRODUCT_PACKAGES += \
-    telephony-ext
+#PRODUCT_PACKAGES += \
+#    telephony-ext
 
-PRODUCT_BOOT_JARS += \
-    telephony-ext
+#PRODUCT_BOOT_JARS += \
+#    telephony-ext
 
 # Tethering
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -413,3 +413,39 @@ PRODUCT_PACKAGES += \
     wificond \
     wpa_supplicant \
     wpa_supplicant.conf
+
+# Halium/UBports
+# Huong Tram is my favorite singer
+
+# Disable FakeSensorServer so UBports can use it
+MINIMEDIA_SENSORSERVER_DISABLE := 1
+
+# Something is also missing here as well
+PRODUCT_PACKAGES += \
+    libmedia_omx \
+    android.frameworks.displayservice@1.0
+
+PRODUCT_PACKAGES += \
+    libion \
+    libsf_compat_layer \
+    libmedia_compat_layer \
+    libui_compat_layer
+
+# HuongfishOS droidmedia
+PRODUCT_PACKAGES += \
+    libdroidmedia \
+    minimediaservice \
+    minisfservice \
+    miniafservice
+
+# Ubuntu
+PRODUCT_PACKAGES += \
+    libbiometry_fp_api \
+    libubuntu_application_api
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/ubports/70-zangya.rules:system/halium/lib/udev/rules.d/70-android.rules \
+    $(LOCAL_PATH)/ubports/scaling.conf:system/ubuntu/etc/ubuntu-touch-session.d/android.conf
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/rootdir/etc/init.disabled.rc:system/etc/init/init.disabled.rc
